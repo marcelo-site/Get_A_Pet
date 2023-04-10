@@ -13,7 +13,9 @@ app.use(express.static('public'))
 
 // Routes
 import { UserRotes } from './routes/UserRotes.js'
+import { PetRoutes } from './routes/PetRoutes.js'
 app.use('/users', UserRotes)
+app.use('/pets', PetRoutes )
 
 
 app.listen(5000)

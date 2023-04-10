@@ -130,7 +130,6 @@ export class UserController {
         // check if user exists
         const token = getToken(req)
         const user = await getUserByToken(token)
-        console.log(user)
 
         const { name, email, phone, password, confirmpassword } = req.body
 
@@ -152,6 +151,9 @@ export class UserController {
         if (!phone) {
             return res.status(422).json({ message: "O phone é obrigratório" })
         }
+
+        user.phone = phone
+
         if (!password) {
             return res.status(422).json({ message: "O password é obrigratório" })
         }
@@ -160,9 +162,27 @@ export class UserController {
         }
         if (password != confirmpassword) {
             return res.status(422).json({ message: "A comfirmação de senha não confere!" })
+        } else if(password === confirmpassword && password != null) {
+            const salt = await bcrypt.genSalt(12)
+            const passwordHash = await bcrypt.hash(password, salt)
+
+            user.password = passwordHash
+        }
+        if(req.file) {
+            user.image = req.file.filename
         }
 
-        let image = ''
+        try {
+            const updatedUser = await User.findOneAndUpdate(
+                {_id: user._id},
+                {$set: user},
+                { new: true}
+            )
+                return res.status(200).json({message: "Usuário atualizado com sucesso!" })
+        } catch (error) {
+            return res.status(500).json({message: error})
+            
+        }
        
     }
 }
