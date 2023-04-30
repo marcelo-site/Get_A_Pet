@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Helvetica;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color:  #16479d;
+  --secondary-color: #ffd400;
+}
+
+h1 {
+  color: var(--primary-color);
+  margin-bottom: 1em;
+  font-size: 2em;
+}
+
+.bold {
+  font-weight: bold;
+  color: var(--primary-color);
+}

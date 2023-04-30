@@ -1,0 +1,45 @@
+.NavBar {
+    display: flex;
+    justify-content: space-between;
+    padding:  1em 1.5em;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.NavBar ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+
+}
+
+.NavBar li,
+.NavBar a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+    padding: .5em .8em;
+    border-radius: 5px;
+}
+
+.NavBar li:hover {
+    background-color: var(--primary-color);
+    
+}
+
+.NavBar a:hover {
+    color: #fff;
+}
+
+.NavBar_logo {
+    display: flex;
+    align-items: center;
+}
+
+.NavBar_logo img {
+    width: 40px;
+    margin-right: .8em;
+}
+
