@@ -8,11 +8,17 @@ import Register from './components/pages/Auth/Register';
 import Home from './components/pages/Home';
 import Login from './components/pages/Auth/Login';
 import Container from './components/layouts/Container';
+import Message from './components/layouts/Message';
+
+// context
+import { UserProvider } from './context/UserContext';
 
 function App() {
   return (
     <Router>
-      <Navbar />
+    <UserProvider>
+    <Navbar />
+    <Message />
       <Container>
         <Routes>
 
@@ -23,6 +29,7 @@ function App() {
         </Routes>
       </Container>
       <Footer />
+    </UserProvider>
     </Router>
   );
 }

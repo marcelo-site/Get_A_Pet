@@ -1,18 +1,33 @@
 import Input from '../../form/Input'
+import { Link } from 'react-router-dom'
+import { useContext, useState } from 'react'
+
+import styles from '../../form/form.module.css'
+
+// context
+import { Context } from '../../../context/UserContext'
 
 function Register() {
-    function handleChange() {
-        return
+    const [user, setUser] = useState({})
+    const { register } = useContext(Context)
+
+    function handleChange(e) {
+        setUser({ ...user, [e.target.name]: e.target.value })
     }
 
+    function handleSubmit(e) {
+        e.preventDefault()
+        // enviar user par o banco
+        register(user)
+    }
     return (
-        <div>
+        <section className={styles.form_container}>
             <h1>Registrar</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <Input
                     text="Nome"
                     type="text"
-                    name="nome"
+                    name="name"
                     placeholder="Digite o seu nome"
                     handleOnChange={handleChange} />
 
@@ -27,26 +42,29 @@ function Register() {
                     text="E-mail"
                     type="email"
                     name="email"
-                    placeholder="Digite o seu nome"
+                    placeholder="Digite o seu email"
                     handleOnChange={handleChange} />
 
                 <Input
                     text="Senha"
                     type="password"
-                    name="pássword"
+                    name="password"
                     placeholder="Digite a sua senha"
                     handleOnChange={handleChange} />
 
                 <Input
                     text="Confirmação de senha"
                     type="passowrd"
-                    name="confirmpassord"
+                    name="confirmpassword"
                     placeholder="Digite sua senha novamente"
                     handleOnChange={handleChange} />
 
                 <input type="submit" value="Cadastrar" />
             </form>
-        </div>
+            <p>
+                Ja tém uma conta? <Link to='/login'>Clique aqui.</Link>
+            </p>
+        </section>
     )
 }
 
