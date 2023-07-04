@@ -29,7 +29,8 @@
     
 }
 
-.NavBar a:hover {
+.NavBar a:hover,
+.NavBar li:hover {
     color: #fff;
 }
 

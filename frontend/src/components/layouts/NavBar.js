@@ -19,14 +19,16 @@ function Navbar() {
                     <Link to="/">Adotar</Link>
                 </li>
                 {authenticated ? (
-                    <> <p>
-                    <li onClick={logout}>Sair</li>
-                    </p>
+                    <>
+                        <li>
+                            <Link to='/user/profile'>Perfil</Link>
+                        </li>
+                        <li onClick={logout}>Sair</li>
                     </>
                 ) : (
                     <><li>
-                            <Link to="/login">Login</Link>
-                        </li>
+                        <Link to="/login">Login</Link>
+                    </li>
                         <li>
                             <Link to="/register">Cadastrar</Link>
                         </li>

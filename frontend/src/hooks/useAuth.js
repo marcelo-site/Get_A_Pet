@@ -11,7 +11,7 @@ export default function useAuth() {
 
     useEffect(() => {
         const token = localStorage.getItem('token')
-        if(token) {
+        if (token) {
             setAuthenticated(true)
             api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
         }
@@ -43,16 +43,33 @@ export default function useAuth() {
         navigate('/')
     }
 
-    function logout () {
+    function logout() {
         const msgText = 'Lougout realizado com sucesso!'
-        const msgType ='sucess'
+        const msgType = 'sucess'
 
         setAuthenticated(false)
         localStorage.removeItem('token')
         api.defaults.headers.Authorization = undefined
         navigate('/')
-        
+
         setFlashMessage(msgText, msgType)
     }
-    return { authenticated, register, logout }
+
+    async function login(user) {
+        let msgText = 'Login realizado com sucesso!'
+        let msgType = 'sucess'
+
+        try {
+            const data = await api.post('/users/login', user)
+                .then(response => response.data)
+
+            await authUser(data)
+        } catch (error) {
+            msgText = error.response.data.message
+            msgType = 'error'
+            setFlashMessage(msgText, msgType)
+        }
+
+    }
+    return { authenticated, register, logout, login }
 }
