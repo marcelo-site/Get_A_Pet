@@ -7,6 +7,7 @@ import formstyles from '../../form/form.module.css'
 
 import Input from '../../form/Input'
 import useFlashMessage from '../../../hooks/useFlashMessage'
+import RoundImage from '../../layouts/RoundImage'
 
 function Profile() {
     console.log(process.env)
@@ -60,7 +61,8 @@ function Profile() {
                 <div className={styles.profile_header}> 
                     <h1>Perfil</h1>
                     {(user.image || preview) && (
-                        <img src={preview ? URL.createObjectURL(preview) : `${process.env.REACT_APP_API}img/users/${user.image}`} />
+                        <RoundImage
+                        src={preview ? URL.createObjectURL(preview) : `${process.env.REACT_APP_API}img/users/${user.image}`} />
                     )}
                 </div>
             <form onSubmit={handleSubmit} className={formstyles.form_container}>
