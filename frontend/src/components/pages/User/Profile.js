@@ -37,7 +37,7 @@ function Profile() {
         let msgType = 'sucess'
 
         const formData = new FormData()
-        Object.keys(user).forEach(key => {
+        await Object.keys(user).forEach(key => {
             formData.append(key, user[key])
         })
         
