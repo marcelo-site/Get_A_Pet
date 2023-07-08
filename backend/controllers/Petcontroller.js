@@ -118,7 +118,6 @@ export class PetController {
         const id = req.params.id
         const { name, age, weight, color, available } = req.body
 
-
         const updatedData = {}
 
         // check if pet exists
@@ -133,7 +132,6 @@ export class PetController {
         if (pet.user._id.toString() !== user._id.toString()) {
             return res.status(422).json({ message: "Houve um problema, tente mais tarde!" })
         }
-
 
         // validations
         if (!name) {
@@ -159,10 +157,9 @@ export class PetController {
 
         //upload de imagens
         const images = req.files
+        console.log(images)
 
-        if (images.length === 0) {
-            return res.status(422).json({ message: "As imagens são obrigatorias!" })
-        } else {
+        if (images.length > 0) {
             updatedData.images = []
             images.map(image => updatedData.images.push(image.filename))
         }
@@ -232,7 +229,7 @@ export class PetController {
 
         await Pet.findByIdAndUpdate(id, pet)
 
-        return res.status(200).json({ messge: "Parabéns! O ciclo de adoção foi concluido!"})
+        return res.status(200).json({ message: "Parabéns! O ciclo de adoção foi concluido!"})
 
     }
 

@@ -15,8 +15,11 @@ import Profile from './components/pages/User/Profile';
 import { UserProvider } from './context/UserContext';
 import MyPets from './components/pages/Pet/MyPets';
 import AddPet from './components/pages/Pet/AddPet';
+import EditPet from './components/pages/Pet/EditPet';
+import PetDetails from './components/pages/Pet/PetDetails';
+import Myadoptions from './components/pages/Pet/MyAdoptions';
 
-function App() {
+function App() { 
   return (
     <Router>
     <UserProvider>
@@ -30,6 +33,9 @@ function App() {
           <Route path="/user/profile" element={<Profile />} />
           <Route path="/pet/mypets" element={<MyPets />} />
           <Route path="/pet/add" element={<AddPet />} />
+          <Route path="/pet/edit/:id" element={<EditPet />} />
+          <Route path="/pet/details/:id" element={<PetDetails />} />
+          <Route path="/pet/myadoptions" element={<Myadoptions />} />
           <Route path="/" element={<Home />} />
 
         </Routes>

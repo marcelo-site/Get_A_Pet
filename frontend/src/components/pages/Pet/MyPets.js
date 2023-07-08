@@ -11,7 +11,7 @@ import styles from './Dashboard.module.css'
 function MyPets() {
     const [pets, setPets] = useState([])
     const [token] = useState(localStorage.getItem('token') || '')
-    const { setFlasshMessage } = useFlashMessage()
+    const { setFlashMessage } = useFlashMessage()
 
     useEffect(() => {
         api.get('/pets/mypets', {
@@ -35,7 +35,7 @@ function MyPets() {
             }
         })
         .then(response => {
-            const updatedPets = pets.filter(pet => pet._id != id)
+            const updatedPets = pets.filter(pet => pet._id !== id)
             setPets(updatedPets)
             return response.data
         })
@@ -44,8 +44,26 @@ function MyPets() {
             msgType = 'error'
             return err.response.data
         })
-        setFlasshMessage(data.message, msgType)
+        setFlashMessage(data.message, msgType)
     }
+
+    async function concludeAdoption (id) {
+        let msgType = 'sucess'
+
+        const data = await api.patch(`pets/conclude/${id}`, {
+            headers: {
+                Authorization: `Bearer ${JSON.parse(token)}`
+            }
+        })
+        .then(response => response.data)
+        .catch(err => {
+            msgType = 'error'
+            return err.response.data
+        })
+
+        setFlashMessage(data.message, msgType)
+    }
+
     return (
         <section>
             <div className={styles.petslist_header}>
@@ -65,8 +83,9 @@ function MyPets() {
                             <div className={styles.actions}>
                                 {pet.available ? (
                                     <>
-                                        {pet.adoter && (
+                                        {pet.adopter && (
                                             <button
+                                            onClick={() => concludeAdoption(pet._id)}
                                             className={styles.conclude_btn}
                                             >Concluir adoção</button>
                                         )}

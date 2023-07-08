@@ -35,7 +35,7 @@ function PetForm({ handleSubmit, petData, btnText }) {
                         <img src={URL.createObjectURL(image)} alt={pet.name}
                             key={`${pet.name}+${index}`} />))
                     : pet.images && pet.images.map((image, index) => (
-                        <img src={`${process.env.REACT_APP_API}images/pets/${image}`}
+                        <img src={`${process.env.REACT_APP_API}img/pets/${image}`}
                             alt={pet.name}
                             key={`${pet.name}+${index}`}
                         />

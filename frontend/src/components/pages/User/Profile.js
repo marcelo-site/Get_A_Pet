@@ -10,7 +10,6 @@ import useFlashMessage from '../../../hooks/useFlashMessage'
 import RoundImage from '../../layouts/RoundImage'
 
 function Profile() {
-    console.log(process.env)
     const [preview, setPreview] = useState('')
     const {setFlashMessage} = useFlashMessage()
     const [user, setUser] = useState({})
@@ -26,8 +25,7 @@ function Profile() {
         setPreview(e.target.files[0])
         setUser({...user, [e.target.name]: e.target.files[0]})
     }
-    function handleChange (e) {
-        console.log(user)        
+    function handleChange (e) {       
         setUser({...user, [e.target.name]: e.target.value})
 
     }
