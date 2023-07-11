@@ -157,7 +157,6 @@ export class PetController {
 
         //upload de imagens
         const images = req.files
-        console.log(images)
 
         if (images.length > 0) {
             updatedData.images = []

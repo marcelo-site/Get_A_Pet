@@ -25,7 +25,7 @@ function Navbar() {
         <nav className={styles.NavBar}>
             <div className={styles.NavBar_logo}>
                 <img src={Logo} alt='logo' />
-                <h2>Get A Pet</h2>
+                <h2>Pet Feliz</h2>
             </div>
             <div>
                 {!back && <div onClick={toggle} className={styles.back}></div>}
