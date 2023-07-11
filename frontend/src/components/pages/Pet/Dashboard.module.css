@@ -90,3 +90,30 @@
   .contacts p {
     margin-bottom: 0.5em;
   }
+
+  @media (max-width: 566px) {
+    .conclude_btn {
+      display: block;
+      margin-bottom: .5em;
+    }
+  }
+
+  @media (max-width: 456px) {
+    .actions button {
+      display: block;
+      margin: 1em;
+    }
+    .petlist_row {
+      display: block;
+    }
+    .actions {
+      margin-top: 1em;
+      display: flex;
+    }
+
+    .actions button,
+    .actions a {
+      margin: 0 .5em;
+      height: 100%;
+    }
+  }

@@ -10,6 +10,11 @@
   --secondary-color: #ffd400;
 }
 
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 h1 {
   color: var(--primary-color);
   margin-bottom: 1em;
@@ -19,4 +24,13 @@ h1 {
 .bold {
   font-weight: bold;
   color: var(--primary-color);
+}
+.over-hidden {
+  overflow: hidden;
+}
+
+@media (max-width: 396px) {
+  body {
+    font-size: .8em;
+  }
 }

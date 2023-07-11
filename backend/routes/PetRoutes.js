@@ -4,7 +4,6 @@ import { PetController } from "../controllers/Petcontroller.js";
 import { checkToken } from "../helpers/verify-token.js";
 import { imageUpload } from "../helpers/image-upload.js";
 
-
 router.post('/create', checkToken, imageUpload.array('images'), PetController.create)
 router.get('/', PetController.getAll)
 router.get('/mypets', checkToken, PetController.getAllUserPets)

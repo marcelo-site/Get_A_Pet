@@ -74,12 +74,14 @@ function MyPets() {
                 {pets.length > 0 &&
                     pets.map(pet => (
                         <div key={pet._id} className={styles.petlist_row}>
+                            <div style={{display: 'flex',alignItems: 'center'}}>
                             <RoundImage
                                 src={`${process.env.REACT_APP_API}img/pets/${pet.images[0]}`}
                                 alt={pet.name}
                                 width='px75'
                             />
                             <span className="bold">{pet.name}</span>
+                            </div>
                             <div className={styles.actions}>
                                 {pet.available ? (
                                     <>
