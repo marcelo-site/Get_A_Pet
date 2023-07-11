@@ -19,7 +19,7 @@ function AddPet() {
 
         const formData = new FormData()
 
-        const petFormData = await Object.keys(pet).forEach(key => {
+        await Object.keys(pet).forEach(key => {
             if (key === 'images') {
                 for (let i = 0; i < pet[key].length; i++) {
                     formData.append('images', pet[key][i])
@@ -28,8 +28,6 @@ function AddPet() {
                 formData.append(key, pet[key])
             }
         })
-
-        formData.append('pet', petFormData)
 
         const data = await api.post('pets/create', formData, {
             Authorization: `Bearer ${JSON.parse(token)}`,

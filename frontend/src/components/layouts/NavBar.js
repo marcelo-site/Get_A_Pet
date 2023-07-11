@@ -20,7 +20,6 @@ function Navbar() {
             setMobile(!mobile)
             document.querySelector('body').classList.toggle('over-hidden')
         }
-
     }
     return (
         <nav className={styles.NavBar}>
@@ -61,7 +60,6 @@ function Navbar() {
                                     </>)
                                 }
                             </div>
-
                         }</ul>
                 </div>
                 {btnMenu && (<div className={styles.btn_menu} style={{ fontWeight: 'bold' }} onClick={toggle}>Menu <span>{mobile ? (<BsList />) : (<span>x</span>)}</span></div>)}
