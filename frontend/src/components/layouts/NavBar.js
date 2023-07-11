@@ -8,16 +8,19 @@ import { Context } from '../../context/UserContext'
 import { useContext, useState } from 'react'
 
 function Navbar() {
-   const deviceSmall = window.innerWidth < 720 ? true : false
+    const deviceSmall = window.innerWidth < 720 ? true : false
     const { authenticated, logout } = useContext(Context)
     const [mobile, setMobile] = useState(deviceSmall)
     const [btnMenu] = useState(deviceSmall)
     const [back, setBack] = useState(deviceSmall)
 
     function toggle() {
-        setBack(!back)
-        setMobile(!mobile)
-        document.querySelector('body').classList.toggle('over-hidden')
+        if (deviceSmall) {
+            setBack(!back)
+            setMobile(!mobile)
+            document.querySelector('body').classList.toggle('over-hidden')
+        }
+
     }
     return (
         <nav className={styles.NavBar}>
@@ -58,9 +61,10 @@ function Navbar() {
                                     </>)
                                 }
                             </div>
+
                         }</ul>
                 </div>
-                {btnMenu && (<div className={styles.btn_menu} style={{fontWeight: 'bold'}} onClick={toggle}>Menu <span>{ mobile ? (<BsList/>) : (<span>x</span>)}</span></div>)}
+                {btnMenu && (<div className={styles.btn_menu} style={{ fontWeight: 'bold' }} onClick={toggle}>Menu <span>{mobile ? (<BsList />) : (<span>x</span>)}</span></div>)}
             </div>
         </nav>
     )
